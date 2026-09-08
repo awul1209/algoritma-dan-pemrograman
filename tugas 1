@@ -1,0 +1,113 @@
+ // 1. Input Data dengan Console.ReadLine()[cite: 1]
+ Console.Write("Masukkan Nama Karyawan : ");
+ string nama = Console.ReadLine();
+
+ Console.Write("Masukkan Gaji Pokok    : ");
+ double gajiPokok = double.Parse(Console.ReadLine()); // Konversi string ke double
+
+ Console.Write("Masukkan Tunjangan     : ");
+ double tunjangan = double.Parse(Console.ReadLine());
+
+ Console.Write("Masukkan Potongan      : ");
+ double potongan = double.Parse(Console.ReadLine());
+
+ // 2. Proses Perhitungan Rumus Gaji Bersih
+ double gajiBersih = gajiPokok + tunjangan - potongan;
+
+ // 3. Menampilkan Output ke Terminal
+ Console.WriteLine("\n--- HASIL GAJI KARYAWAN ---");
+ Console.WriteLine("Nama Karyawan  : " + nama);
+ Console.WriteLine("Gaji Bersih    : Rp" + gajiBersih);
+
+ Console.ReadKey();
+
+
+ // 1. Input Data dengan tipe data yang sesuai
+ Console.Write("Masukkan Nama Barang    : ");
+ string namaBarang = Console.ReadLine();
+
+ Console.Write("Masukkan Harga Satuan   : ");
+ double hargaSatuan = double.Parse(Console.ReadLine()); //[cite: 1]
+
+ Console.Write("Masukkan Jumlah Beli    : ");
+ int jumlahBeli = int.Parse(Console.ReadLine()); // Menggunakan int karena jumlah barang bilangan bulat
+
+ Console.Write("Masukkan Diskon (%)     : ");
+ double diskonPersen = double.Parse(Console.ReadLine());
+
+ // 2. Proses Perhitungan Rumus
+ double subtotal = hargaSatuan * jumlahBeli;
+ double potonganDiskon = subtotal * (diskonPersen / 100);
+ double totalBayar = subtotal - potonganDiskon;
+
+ // 3. Menampilkan Output Struk Belanja
+ Console.WriteLine("\n--- STRUK PEMBELANJAAN ---");
+ Console.WriteLine("Nama Barang     : " + namaBarang);
+ Console.WriteLine("Subtotal        : Rp" + subtotal);
+ Console.WriteLine("Potongan Diskon : Rp" + potonganDiskon);
+ Console.WriteLine("Total Bayar     : Rp" + totalBayar);
+
+ Console.ReadKey();
+
+
+ // 1. Input Nilai Komponen (Menggunakan double karena ada persentase desimal)
+ Console.Write("Masukkan Nilai Tugas : ");
+ double tugas = double.Parse(Console.ReadLine()); //[cite: 1]
+
+ Console.Write("Masukkan Nilai UTS   : ");
+ double uts = double.Parse(Console.ReadLine());
+
+ Console.Write("Masukkan Nilai UAS   : ");
+ double uas = double.Parse(Console.ReadLine());
+
+ // 2. Proses Perhitungan Rumus Nilai Akhir
+ double nilaiAkhir = (tugas * 0.30) + (uts * 0.30) + (uas * 0.40);
+
+ // 3. Menampilkan Hasil Rekap Nilai
+ Console.WriteLine("\n--- REKAP NILAI AKHIR ---");
+ Console.WriteLine("Nilai Akhir Mahasiswa : " + nilaiAkhir);
+
+ Console.ReadKey();
+
+
+ // 1. Input Data Perjalanan
+ Console.Write("Masukkan Jarak Tempuh (km)       : ");
+ double jarak = double.Parse(Console.ReadLine()); //[cite: 1]
+
+ Console.Write("Masukkan Waktu Tempuh (jam)      : ");
+ double waktu = double.Parse(Console.ReadLine());
+
+ Console.Write("Masukkan Konsumsi BBM (km/liter) : ");
+ double konsumsiBBM = double.Parse(Console.ReadLine());
+
+ // 2. Proses Perhitungan Rumus Fisika & BBM
+ double kecepatan = jarak / waktu;
+ double bensinHabis = jarak / konsumsiBBM;
+
+ // 3. Menampilkan Laporan Perjalanan
+ Console.WriteLine("\n--- LAPORAN PERJALANAN ---");
+ Console.WriteLine("Kecepatan Rata-rata : " + kecepatan + " km/jam");
+ Console.WriteLine("Bensin yang Habis   : " + bensinHabis + " liter");
+
+ Console.ReadKey();
+
+ // 1. Input Data Tagihan Listrik
+ Console.Write("Masukkan Pemakaian (kWh)   : ");
+ double pemakaianKwh = double.Parse(Console.ReadLine()); //[cite: 1]
+
+ Console.Write("Masukkan Tarif per kWh     : ");
+ double tarifPerKwh = double.Parse(Console.ReadLine());
+
+ Console.Write("Masukkan Biaya Admin Tetap : ");
+ double biayaAdmin = double.Parse(Console.ReadLine());
+
+ // 2. Proses Perhitungan Rumus Tagihan
+ double biayaPemakaian = pemakaianKwh * tarifPerKwh;
+ double totalTagihan = biayaPemakaian + biayaAdmin;
+
+ // 3. Menampilkan Rincian Tagihan
+ Console.WriteLine("\n--- RINCIAN TAGIHAN LISTRIK ---");
+ Console.WriteLine("Biaya Pemakaian    : Rp" + biayaPemakaian);
+ Console.WriteLine("Total yang Dibayar : Rp" + totalTagihan);
+
+ Console.ReadKey();
