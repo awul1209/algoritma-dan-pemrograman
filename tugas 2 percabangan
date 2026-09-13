@@ -1,0 +1,26 @@
+ Console.Write("masukkan total belanja : ");
+ double belanja = double.Parse(Console.ReadLine());
+
+ double diskon = 0;
+
+ if(belanja >= 500000)
+ {
+     diskon = 20;
+ }
+ else if(belanja >= 250000)
+ {
+     diskon = 10;
+ }
+ else
+ {
+     diskon = 0;
+ }
+
+ double diskonnya = (belanja * (diskon / 100));
+ double total_belanja = belanja - diskonnya;
+
+ Console.WriteLine("Anda mendapat Diskon     : " + diskonnya);
+ Console.WriteLine("Total yang harus dibayar : " + total_belanja);
+
+
+ Console.ReadKey();
