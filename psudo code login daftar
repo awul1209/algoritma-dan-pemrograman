@@ -1,0 +1,23 @@
+ALGORITMA LOGIN
+
+Deklarasi:
+    username ← ""
+    password ← ""
+
+    MULAI
+
+        Input username
+        Input password
+        Cek Jika Username Terdaftar
+              JIKA username = "admin" DAN password = "12345" MAKA
+                  Tampilkan "Login Berhasil"
+                  Login ← berhasil
+              JIKA TIDAK
+                  Tampilkan "Username atau Password Salah"
+                  Login ← gagal
+
+        Jika Belum terdaftar
+              Tampilkan "Username belum terdaftar"
+              Tampilkan "Silakan daftar terlebih dahulu"
+           
+    SELESAI
