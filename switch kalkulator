@@ -69,3 +69,13 @@
  Console.WriteLine("\n==================================");
  Console.WriteLine("Terima kasih telah menggunakan kalkulator.");
  Console.ReadKey();
+
+
+Console.Write("Masukkan Nilai Ujian : ");
+        double nilai = double.Parse(Console.ReadLine());
+
+        // Menggunakan Operator Ternary
+        // Jika nilai >= 75 (Benar), maka "Lulus", jika (Salah), maka "Remedial"
+        string status = (nilai >= 75) ? "Lulus" : "Remedial";
+
+        Console.WriteLine($"Status Ujian Anda: {status}");
