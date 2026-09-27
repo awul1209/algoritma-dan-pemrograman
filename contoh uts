@@ -1,0 +1,235 @@
+ // Variabel untuk autentikasi sederhana & data toko
+ string namaKasir = "Admin Warung";
+ bool isRunning = true;
+
+ // Data Barang (Array / Variabel Sederhana untuk simulasi stok)
+ string barang1Nama = "Beras 5kg";
+ double barang1Harga = 65000;
+ int barang1Stok = 15;
+
+ string barang2Nama = "Minyak Goreng 2L";
+ double barang2Harga = 32000;
+ int barang2Stok = 20;
+
+ string barang3Nama = "Gula Pasir 1kg";
+ double barang3Harga = 14000;
+ int barang3Stok = 25;
+
+ string barang4Nama = "Telur 1kg";
+ double barang4Harga = 28000;
+ int barang4Stok = 10;
+
+ // Variabel Transaksi Berjalan
+ double totalBelanja = 0;
+ string riwayatTransaksi = "";
+
+ // Perulangan Utama Program (Menu Utama)
+ while (isRunning)
+ {
+     Console.Clear();
+     Console.WriteLine("========================================");
+     Console.WriteLine("    APLIKASI KASIR - WARUNG PINTAR     ");
+     Console.WriteLine("========================================");
+     Console.WriteLine($" Kasir Aktif : {namaKasir}");
+     Console.WriteLine($" Total Sementera Belanja: Rp {totalBelanja:N0}");
+     Console.WriteLine("----------------------------------------");
+     Console.WriteLine(" 1. Lihat Daftar Barang & Stok");
+     Console.WriteLine(" 2. Tambah Barang ke Keranjang (Transaksi)");
+     Console.WriteLine(" 3. Cetak Struk & Bayar");
+     Console.WriteLine(" 4. Batalkan / Reset Transaksi");
+     Console.WriteLine(" 5. Keluar Aplikasi");
+     Console.WriteLine("========================================");
+     Console.Write(" Pilih menu (1-5): ");
+
+     string pilihanInput = Console.ReadLine();
+
+     // Konversi input menu menggunakan percabangan switch-case
+     switch (pilihanInput)
+     {
+         case "1":
+             Console.Clear();
+             Console.WriteLine("=== DAFTAR BARANG & STOK ===");
+             Console.WriteLine($"1. {barang1Nama} | Harga: Rp {barang1Harga:N0} | Stok: {barang1Stok}");
+             Console.WriteLine($"2. {barang2Nama} | Harga: Rp {barang2Harga:N0} | Stok: {barang2Stok}");
+             Console.WriteLine($"3. {barang3Nama} | Harga: Rp {barang3Harga:N0} | Stok: {barang3Stok}");
+             Console.WriteLine($"4. {barang4Nama} | Harga: Rp {barang4Harga:N0} | Stok: {barang4Stok}");
+             Console.WriteLine("\nTekan tombol apa saja untuk kembali ke menu...");
+             Console.ReadKey();
+             break;
+
+         case "2":
+             bool belanjaLagi = true;
+             while (belanjaLagi)
+             {
+                 Console.Clear();
+                 Console.WriteLine("=== TRANSAKSI PEMBELIAN ===");
+                 Console.WriteLine("Pilih nomor barang yang ingin dibeli:");
+                 Console.WriteLine($"1. {barang1Nama} (Rp {barang1Harga:N0})");
+                 Console.WriteLine($"2. {barang2Nama} (Rp {barang2Harga:N0})");
+                 Console.WriteLine($"3. {barang3Nama} (Rp {barang3Harga:N0})");
+                 Console.WriteLine($"4. {barang4Nama} (Rp {barang4Harga:N0})");
+                 Console.Write("Masukkan pilihan barang (1-4): ");
+
+                 string pilihBarang = Console.ReadLine();
+
+                 Console.Write("Masukkan jumlah beli: ");
+                 // Konversi string ke int menggunakan int.Parse
+                 int jumlahBeli = int.Parse(Console.ReadLine());
+
+                 double subtotal = 0;
+                 string namaBarangDipilih = "";
+                 bool stokCukup = true;
+
+                 // Percabangan untuk menentukan barang dan validasi stok
+                 if (pilihBarang == "1")
+                 {
+                     namaBarangDipilih = barang1Nama;
+                     if (jumlahBeli <= barang1Stok)
+                     {
+                         subtotal = barang1Harga * jumlahBeli;
+                         barang1Stok -= jumlahBeli; // Kurangi stok
+                     }
+                     else { stokCukup = false; }
+                 }
+                 else if (pilihBarang == "2")
+                 {
+                     namaBarangDipilih = barang2Nama;
+                     if (jumlahBeli <= barang2Stok)
+                     {
+                         subtotal = barang2Harga * jumlahBeli;
+                         barang2Stok -= jumlahBeli;
+                     }
+                     else { stokCukup = false; }
+                 }
+                 else if (pilihBarang == "3")
+                 {
+                     namaBarangDipilih = barang3Nama;
+                     if (jumlahBeli <= barang3Stok)
+                     {
+                         subtotal = barang3Harga * jumlahBeli;
+                         barang3Stok -= jumlahBeli;
+                     }
+                     else { stokCukup = false; }
+                 }
+                 else if (pilihBarang == "4")
+                 {
+                     namaBarangDipilih = barang4Nama;
+                     if (jumlahBeli <= barang4Stok)
+                     {
+                         subtotal = barang4Harga * jumlahBeli;
+                         barang4Stok -= jumlahBeli;
+                     }
+                     else { stokCukup = false; }
+                 }
+                 else
+                 {
+                     Console.WriteLine("Pilihan barang tidak valid!");
+                     stokCukup = false;
+                 }
+
+                 if (stokCukup && subtotal > 0)
+                 {
+                     totalBelanja += subtotal;
+                     riwayatTransaksi += $"- {namaBarangDipilih} x{jumlahBeli} = Rp {subtotal:N0}\n";
+                     Console.WriteLine($"Berhasil menambahkan {jumlahBeli} {namaBarangDipilih} ke keranjang.");
+                 }
+                 else if (!stokCukup && pilihBarang == "1" || !stokCukup && pilihBarang == "2" || !stokCukup && pilihBarang == "3" || !stokCukup && pilihBarang == "4")
+                 {
+                     Console.WriteLine("Maaf, stok barang tidak mencukupi!");
+                 }
+
+                 // Tanya apakah ingin tambah barang lagi dalam transaksi ini
+                 Console.Write("\nIngin tambah barang lain? (y/t): ");
+                 string lanjut = Console.ReadLine().ToLower();
+                 if (lanjut != "y")
+                 {
+                     belanjaLagi = false;
+                 }
+             }
+             break;
+
+         case "3":
+             Console.Clear();
+             if (totalBelanja == 0)
+             {
+                 Console.WriteLine("Keranjang belanja masih kosong!");
+             }
+             else
+             {
+                 Console.WriteLine("========================================");
+                 Console.WriteLine("               STRUK PEMBELIAN          ");
+                 Console.WriteLine("========================================");
+                 Console.WriteLine(riwayatTransaksi);
+                 Console.WriteLine("----------------------------------------");
+                 Console.WriteLine($"Total Belanja : Rp {totalBelanja:N0}");
+
+                 // Fitur Diskon Berdasarkan Total Belanja (Percabangan Bersarang)
+                 double diskon = 0;
+                 if (totalBelanja >= 150000)
+                 {
+                     diskon = 0.15; // Diskon 15%
+                     Console.WriteLine("Selamat! Anda mendapatkan diskon spesial 15%.");
+                 }
+                 else if (totalBelanja >= 75000)
+                 {
+                     diskon = 0.05; // Diskon 5%
+                     Console.WriteLine("Selamat! Anda mendapatkan diskon 5%.");
+                 }
+
+                 double jumlahDiskon = totalBelanja * diskon;
+                 double totalAkhir = totalBelanja - jumlahDiskon;
+
+                 if (diskon > 0)
+                 {
+                     Console.WriteLine($"Jumlah Diskon : Rp {jumlahDiskon:N0}");
+                     Console.WriteLine($"Total Akhir   : Rp {totalAkhir:N0}");
+                 }
+
+                 // Proses Pembayaran dengan Konversi Variabel (Convert.ToDouble)
+                 bool pembayaranValid = false;
+                 while (!pembayaranValid)
+                 {
+                     Console.Write("\nMasukkan Uang Tunai Pembeli : Rp ");
+                     double uangBayar = Convert.ToDouble(Console.ReadLine());
+
+                     if (uangBayar >= totalAkhir)
+                     {
+                         double kembalian = uangBayar - totalAkhir;
+                         Console.WriteLine($"Uang Kembalian             : Rp {kembalian:N0}");
+                         Console.WriteLine("========================================");
+                         Console.WriteLine("   Terima Kasih Telah Berbelanja!       ");
+
+                         // Reset transaksi setelah pembayaran sukses
+                         totalBelanja = 0;
+                         riwayatTransaksi = "";
+                         pembayaranValid = true;
+                     }
+                     else
+                     {
+                         Console.WriteLine("Uang tunai kurang! Mohon masukkan nominal yang cukup.");
+                     }
+                 }
+             }
+             Console.WriteLine("\nTekan tombol apa saja untuk kembali ke menu...");
+             Console.ReadKey();
+             break;
+
+         case "4":
+             totalBelanja = 0;
+             riwayatTransaksi = "";
+             Console.WriteLine("Transaksi berhasil di-reset.");
+             Console.WriteLine("Tekan tombol apa saja untuk kembali...");
+             Console.ReadKey();
+             break;
+
+         case "5":
+             isRunning = false;
+             Console.WriteLine("Terima kasih telah menggunakan aplikasi ini. Sampai jumpa!");
+             break;
+
+         default:
+             Console.WriteLine("Pilihan menu tidak valid. Tekan tombol apa saja untuk ulang...");
+             Console.ReadKey();
+             break;
+     }
+ }
