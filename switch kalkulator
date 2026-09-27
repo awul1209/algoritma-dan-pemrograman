@@ -1,0 +1,71 @@
+ Console.WriteLine("==================================");
+ Console.WriteLine("      KALKULATOR SEDERHANA C#     ");
+ Console.WriteLine("==================================");
+
+    
+
+ // 2. Menu Pilihan Operator
+ Console.WriteLine("\nPilih Operator Aritmatika:");
+ Console.WriteLine("1. Penjumlahan (+)");
+ Console.WriteLine("2. Pengurangan (-)");
+ Console.WriteLine("3. Perkalian   (*)");
+ Console.WriteLine("4. Pembagian   (/)");
+
+ Console.Write("Masukkan pilihan Anda (1-4 atau simbol): ");
+ string pilihan = Console.ReadLine();
+
+ // 1. Input Angka Pertama dan Kedua
+ Console.Write("Masukkan angka pertama : ");
+ double angka1 = double.Parse(Console.ReadLine());
+
+ Console.Write("Masukkan angka kedua   : ");
+ double angka2 = double.Parse(Console.ReadLine());
+
+ double hasil = 0;
+ bool statusValid = true;
+
+ // 3. Implementasi Struktur Switch-Case
+ switch (pilihan)
+ {
+     case "1":
+     case "+":
+         hasil = angka1 + angka2;
+         Console.WriteLine($"\nHasil: {angka1} + {angka2} = {hasil}");
+         break;
+
+     case "2":
+     case "-":
+         hasil = angka1 - angka2;
+         Console.WriteLine($"\nHasil: {angka1} - {angka2} = {hasil}");
+         break;
+
+     case "3":
+     case "*":
+         hasil = angka1 * angka2;
+         Console.WriteLine($"\nHasil: {angka1} * {angka2} = {hasil}");
+         break;
+
+     case "4":
+     case "/":
+         // Validasi pembagian dengan angka nol
+         if (angka2 != 0)
+         {
+             hasil = angka1 / angka2;
+             Console.WriteLine($"\nHasil: {angka1} / {angka2} = {hasil}");
+         }
+         else
+         {
+             Console.WriteLine("\nError: Tidak bisa melakukan pembagian dengan angka nol (0)!");
+           
+         }
+         break;
+
+     default:
+         Console.WriteLine("\nMaaf, pilihan operator tidak valid!");
+      
+         break;
+ }
+
+ Console.WriteLine("\n==================================");
+ Console.WriteLine("Terima kasih telah menggunakan kalkulator.");
+ Console.ReadKey();
