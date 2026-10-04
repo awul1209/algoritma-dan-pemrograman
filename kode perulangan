@@ -1,0 +1,65 @@
+  //tampilkan angka
+  //for (int i = 1; i <= 20; i++)
+  //{
+  //    Console.WriteLine($"Angka {i}");
+  //}
+
+  //Console.WriteLine();
+  //for (int i = 1; i <= 20; i++)
+  //{
+  //    if (i % 2 == 1)
+  //    {
+  //        Console.WriteLine($"Angka {i}");
+  //    }
+  //}
+
+  //perkalian
+  //Console.Write("Masukkan angka: ");
+  //int angka = int.Parse(Console.ReadLine());
+
+  //for(int i = 1; i <= 10; i++)
+  //{
+  //    Console.WriteLine($"Hasil Perkalian {angka} * {i} = {angka * i} ");
+  //}
+
+  //menu
+  //int menu = 0;
+
+  //do 
+  //{
+  //    Console.WriteLine("1. Makanan");
+  //    Console.WriteLine("2. Minuman");
+  //    Console.WriteLine("3. Snack");
+  //    Console.WriteLine("4. Keluar");
+
+  //    Console.Write("Pilih Menu : ");
+  //    menu = int.Parse(Console.ReadLine());
+
+  //} while (menu != 4);
+
+
+  //for (int baris = 1; baris <= 5; baris++)
+  //{
+  //    for (int kolom = 1; kolom <= baris; kolom++)
+  //    {
+  //        Console.Write("*");
+  //    }
+  //    Console.WriteLine();
+  //}
+
+  //int tinggi = 5;
+
+  //for (int baris = 1; baris <= tinggi; baris++)
+  //{
+  //    for (int spasi = 1; spasi <= tinggi - baris; spasi++)
+  //    {
+  //        Console.Write(" ");
+  //    }
+
+  //    for (int kolom = 1; kolom <= baris; kolom++)
+  //    {
+  //        Console.Write("* ");
+  //    }
+
+  //    Console.WriteLine();
+  //}
