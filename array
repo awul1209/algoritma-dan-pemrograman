@@ -1,0 +1,31 @@
+        Console.Write("Jumlah mahasiswa: ");
+        int n = int.Parse(Console.ReadLine());
+
+        string[] nama = new string[n];
+        int[] nilai = new int[n];
+
+        // Menyimpan data ke array
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"Nama ke-{i + 1}: ");
+            nama[i] = Console.ReadLine();
+            Console.Write($"Nilai {nama[i]}: ");
+            nilai[i] = int.Parse(Console.ReadLine());
+        }
+
+        // Memanggil data dari array
+        Console.WriteLine("\n=== Daftar Nilai ===");
+        int total = 0;
+        int tertinggi = nilai[0];
+
+        for (int i = 0; i < n; i++)
+        {
+            Console.WriteLine($"{i + 1}. {nama[i]} : {nilai[i]}");
+            total += nilai[i];
+            if (nilai[i] > tertinggi) tertinggi = nilai[i];
+        }
+
+        double rata = (double)total / n;
+        Console.WriteLine($"\nTotal     : {total}");
+        Console.WriteLine($"Rata-rata : {rata:F2}");
+        Console.WriteLine($"Tertinggi : {tertinggi}");
