@@ -1,0 +1,102 @@
+ // 1
+ int jumlah = 0;
+ for (int i = 1; i < 5; i++)
+ {
+     jumlah += i;
+ }
+
+ Console.WriteLine($"Total jumlahnya sekarang  {jumlah}");
+
+ // 2
+ int a = 5;
+ int b = a++ * 2;
+
+ Console.WriteLine($"nilai a : {a}  dan nilai b : {b}");
+
+ // 3
+ int c = 0;
+ for (int i = 0; i < 3; i++)
+ {
+     for (int j = 0; j < 2; j++)
+     {
+         c++;
+     }
+ }
+ Console.WriteLine(c);
+
+ // 4
+ int d = 5;
+ int e = ++d * 2;
+
+ Console.WriteLine($"nilai a : {d}  dan nilai b : {e}");
+
+
+ // 5
+ int[] array = { 2, 3, 5, 7, 8, 11 };
+ int hasil = 0;
+
+ // "Ambil setiap 'angka' di dalam 'array'"
+ foreach (int angka in array)
+ {
+     // Cek apakah 'angka' tersebut genap
+     if (angka % 2 == 0)
+     {
+         hasil += angka; // Tambahkan langsung angkanya
+     }
+ }
+
+ Console.WriteLine(hasil);
+
+
+ // 6
+ string[,] buah =
+ {
+     {"Anggur", "Durian", "Mangga" },
+     { "Rambutan", "Semangka", "Apel"}
+ };
+
+ Console.WriteLine();
+
+ for (int baris = 0; baris < buah.GetLength(0); baris++)
+ {
+     for (int kolom = 0; kolom < buah.GetLength(1); kolom++ )
+     {
+         Console.Write(buah[baris, kolom] + " ");
+     }
+     Console.WriteLine();
+ }
+
+ // 7 
+
+ int hasilnya = 0;
+ for (int i = 0; i < 10; i+=2)
+ {
+     hasilnya += i;
+ }
+ Console.WriteLine(hasilnya);
+
+ // 8 
+ int hasil_1 = 0;
+ for (int i = 1; i < 5; i++)
+ {
+     for (int j = 2; j < 10; j+=2)
+     {
+         hasil_1 += j;
+     }
+ }
+ Console.WriteLine(hasil_1);
+
+ // 9
+
+ int skor = 11;
+ //while (skor <= 10)
+ //{
+ //    Console.WriteLine("iya skor lebih kecil atau sama dengan 10");
+ //    skor++;
+ //}
+
+ do
+ {
+     Console.WriteLine("iya skor lebih kecil atau sama dengan 10");
+     skor++;
+ } while (skor <= 10);
