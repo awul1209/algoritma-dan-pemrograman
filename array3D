@@ -1,0 +1,26 @@
+ string[,,] array3D =
+ {
+     {
+         { "Apel", "Jeruk", "Nangka" },
+         { "Nanas", "Strawbery", "leci" }
+     },
+     {
+         { "Anggur", "Durian", "Semangka" },
+         { "Rambutan", "Delima", "Peer" }
+     }
+    
+ };
+
+ for (int a = 0; a < array3D.GetLength(0); a++)
+ {
+     Console.WriteLine($"ini tingkat ke {a + 1}");
+     for (int baris = 0; baris < array3D.GetLength(1); baris++) 
+     {
+         Console.WriteLine($"ini Baris ke {baris + 1}");
+         for (int kolom = 0; kolom < array3D.GetLength(2); kolom++)
+         {
+             Console.Write(array3D[a,baris,kolom] + " ");
+         }
+         Console.WriteLine("\n");
+     }
+ }
