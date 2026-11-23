@@ -1,0 +1,116 @@
+// Inisialisasi List kosong
+            List<string> dataMahasiswa = new List<string>();
+            bool programJalan = true;
+
+            while (programJalan)
+            {
+                // Membersihkan layar setiap kali kembali ke menu utama
+                Console.Clear();
+                Console.WriteLine("=== SISTEM DATA MAHASISWA (TI26B) ===");
+                Console.WriteLine("1. Tambah Mahasiswa Baru (Create)");
+                Console.WriteLine("2. Tampilkan Semua Data (Read)");
+                Console.WriteLine("3. Ubah Data Mahasiswa (Update)");
+                Console.WriteLine("4. Hapus Data Mahasiswa (Delete)");
+                Console.WriteLine("5. Urutkan Data (Sort A-Z)");
+                Console.WriteLine("6. Keluar Program");
+                Console.WriteLine("=====================================");
+                Console.Write("Pilih menu (1-6): ");
+                
+                string pilihan = Console.ReadLine();
+                Console.WriteLine(); // Spasi agar rapi
+
+                switch (pilihan)
+                {
+                    case "1": // CREATE
+                        Console.Write("Masukkan nama mahasiswa baru: ");
+                        string namaBaru = Console.ReadLine();
+                        dataMahasiswa.Add(namaBaru);
+                        Console.WriteLine($"Sukses: Mahasiswa bernama '{namaBaru}' berhasil ditambahkan.");
+                        break;
+
+                    case "2": // READ
+                        Console.WriteLine("--- Daftar Mahasiswa ---");
+                        // Validasi: Cek apakah List kosong
+                        if (dataMahasiswa.Count == 0)
+                        {
+                            Console.WriteLine("Data masih kosong! Silakan tambah data terlebih dahulu.");
+                        }
+                        else
+                        {
+                            // Menampilkan data dengan nomor urut
+                            for (int i = 0; i < dataMahasiswa.Count; i++)
+                            {
+                                Console.WriteLine($"{i + 1}. {dataMahasiswa[i]}");
+                            }
+                        }
+                        break;
+
+                    case "3": // UPDATE
+                        Console.Write("Masukkan nama mahasiswa yang ingin diubah: ");
+                        string namaLama = Console.ReadLine();
+                        
+                        // Validasi: Cek apakah nama yang dicari ada di dalam List
+                        if (dataMahasiswa.Contains(namaLama))
+                        {
+                            Console.Write("Masukkan nama pengganti yang baru: ");
+                            string namaUpdate = Console.ReadLine();
+                            
+                            // Cari nomor urut (indeks) dari nama lama, lalu timpa datanya
+                            int indeks = dataMahasiswa.IndexOf(namaLama);
+                            dataMahasiswa[indeks] = namaUpdate; 
+                            
+                            Console.WriteLine($"Sukses: Data '{namaLama}' berhasil diubah menjadi '{namaUpdate}'.");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Gagal: Nama '{namaLama}' tidak ditemukan di dalam sistem.");
+                        }
+                        break;
+
+                    case "4": // DELETE
+                        Console.Write("Masukkan nama mahasiswa yang ingin dihapus: ");
+                        string namaHapus = Console.ReadLine();
+                        
+                        // Validasi agar program tidak error saat menghapus data yang tidak ada
+                        if (dataMahasiswa.Contains(namaHapus))
+                        {
+                            dataMahasiswa.Remove(namaHapus);
+                            Console.WriteLine($"Sukses: Data '{namaHapus}' berhasil dihapus.");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Gagal: Nama '{namaHapus}' tidak ditemukan di dalam sistem.");
+                        }
+                        break;
+
+                    case "5": // SORTING
+                        if (dataMahasiswa.Count == 0)
+                        {
+                            Console.WriteLine("Data masih kosong, tidak ada yang bisa diurutkan.");
+                        }
+                        else
+                        {
+                            dataMahasiswa.Sort(); // Proses pengurutan A-Z
+                            Console.WriteLine("Sukses: Data berhasil diurutkan secara alfabetis (A-Z).");
+                            Console.WriteLine("Hasil: " + string.Join(", ", dataMahasiswa));
+                        }
+                        break;
+
+                    case "6": // KELUAR
+                        programJalan = false;
+                        Console.WriteLine("Keluar dari program. Terima kasih!");
+                        break;
+
+                    default:
+                        // Menangkap input jika user mengetik angka selain 1-6 atau huruf
+                        Console.WriteLine("Input tidak valid! Silakan pilih angka 1 sampai 6.");
+                        break;
+                }
+
+                // Menahan layar agar pesan bisa dibaca sebelum kembali ke menu (kecuali jika keluar)
+                if (programJalan)
+                {
+                    Console.WriteLine("\nTekan ENTER untuk kembali ke menu utama...");
+                    Console.ReadLine();
+                }
+            }
