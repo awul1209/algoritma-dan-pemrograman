@@ -1,0 +1,131 @@
+  // Variabel Global
+  static List<string> mhs = new List<string>();
+
+  // 1. CREATE (Tambah)
+  static void Tambah()
+  {
+      Console.Write("\nMasukkan Nama Mahasiswa: ");
+      string data_mhs = Console.ReadLine();
+      mhs.Add(data_mhs);
+      Console.WriteLine("Berhasil: Data ditambahkan!\n");
+  }
+
+  // 2. READ (Lihat)
+  static void Lihat()
+  {
+      Console.WriteLine("\n== Daftar Mahasiswa ==");
+      if (mhs.Count == 0)
+      {
+          Console.WriteLine("Data masih kosong.\n");
+      }
+      else
+      {
+          // Menggunakan for loop untuk menampilkan nomor urut
+          for (int i = 0; i < mhs.Count; i++)
+          {
+              // i + 1 agar nomor dimulai dari 1, bukan 0
+              Console.WriteLine($"{i + 1}. {mhs[i]}");
+          }
+          Console.WriteLine(); // Spasi enter
+      }
+  }
+
+  // 3. UPDATE (Ubah)
+  static void Ubah()
+  {
+      Lihat(); // Tampilkan data terlebih dahulu
+
+      if (mhs.Count > 0)
+      {
+          Console.Write("Masukkan Nomor Urut yang ingin diubah: ");
+          int nomor = int.Parse(Console.ReadLine());
+
+          // Validasi agar tidak error "Index out of range"
+          if (nomor >= 1 && nomor <= mhs.Count)
+          {
+              Console.Write("Masukkan Nama Baru: ");
+              string namaBaru = Console.ReadLine();
+
+              // Karena List dimulai dari index 0, maka nomor urut harus dikurangi 1
+              mhs[nomor - 1] = namaBaru;
+              Console.WriteLine("Berhasil: Data diubah!\n");
+          }
+          else
+          {
+              Console.WriteLine("Error: Nomor tidak ditemukan!\n");
+          }
+      }
+  }
+
+  // 4. DELETE (Hapus)
+  static void Hapus()
+  {
+      Lihat(); // Tampilkan data terlebih dahulu
+
+      if (mhs.Count > 0)
+      {
+          Console.Write("Masukkan Nomor Urut yang ingin dihapus: ");
+          int nomor = int.Parse(Console.ReadLine());
+
+          // Validasi nomor urut
+          if (nomor >= 1 && nomor <= mhs.Count)
+          {
+              string namaDihapus = mhs[nomor - 1]; // Simpan nama untuk ditampilkan
+
+              // Gunakan RemoveAt untuk menghapus berdasarkan index
+              mhs.RemoveAt(nomor - 1);
+              Console.WriteLine($"Berhasil: Data '{namaDihapus}' telah dihapus!\n");
+          }
+          else
+          {
+              Console.WriteLine("Error: Nomor tidak ditemukan!\n");
+          }
+      }
+  }
+
+  static void Main(string[] args)
+  {
+      bool menu = true;
+
+      while (menu)
+      {
+          Console.WriteLine("== Menu CRUD Data Mahasiswa ==");
+          Console.WriteLine("1. Tambah");
+          Console.WriteLine("2. Lihat");
+          Console.WriteLine("3. Ubah");
+          Console.WriteLine("4. Hapus");
+          Console.WriteLine("5. Keluar");
+
+          // Typo diperbaiki
+          Console.Write("Masukkan Pilihan : ");
+          int pilihan = int.Parse(Console.ReadLine());
+
+          if (pilihan == 5)
+          {
+              Console.WriteLine("\n== Terima Kasih ==");
+              menu = false;
+          }
+          // LOGIKA DIPERBAIKI: Menggunakan && (AND) bukan || (OR)
+          else if (pilihan >= 1 && pilihan <= 4)
+          {
+              switch (pilihan)
+              {
+                  case 1:
+                      Tambah();
+                      break;
+                  case 2:
+                      Lihat();
+                      break;
+                  case 3:
+                      Ubah();
+                      break;
+                  case 4:
+                      Hapus();
+                      break;
+              }
+          }
+          else
+          {
+              Console.WriteLine("\n== Menu Tidak Valid ==\n");
+          }
+      }
